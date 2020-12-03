@@ -21,94 +21,74 @@ let numPuffer = 0;
 // Fish Event
 fishBtnEl.addEventListener("click", catchFish);
 
+function simulatecatch(char)
+{
+  resultImgEl.src=catchFish();
+}
 function catchFish() {
   if (character === "steve") {
     // STEVE PROBABILITIES: cod (70%), salmon (20%), tropical (5%), puffer (5%)
-    simulatecatch(70,20,5);
-
+    let randNum = Math.random();
+    if (randNum < 0.7) {
+      //numCod++;
+      codSpanEl.innerHTML = numCod;
+      return "img/Raw-Cod.png";
+    } else if (randNum < 0.9) {
+      //numSalmon++;
+      salmonSpanEl.innerHTML = numSalmon;
+      return "img/Raw-Salmon.png";
+    } else if (randNum < 0.95) {
+     // numTropical++;
+      tropicalSpanEl.innerHTML = numTropical;
+      return "img/Tropical-Fish.png";
+    } else {
+     // numPuffer++;
+      pufferSpanEl.innerHTML = numPuffer;
+      return "img/Pufferfish.png";
+    }
   } else if (character === "alex") {
     // ALEX PROBABILITIES: cod (10%), salmon (10%), tropical (30%), puffer (50%)
-    simulatecatch(10,10,30);
-
-  } else if (character === "villager") 
-  {
-    // VILLAGER PROBABILITIES: cod (25%), salmon (25%), tropical (25%), puffer (25%)
-    simulatecatch(25,25,25);
-  }
-}
-function simulatecatch(a,b,c)
-{
     let randNum = Math.random();
-    if(a==70 && b==20 && c==5)
-    {
-        let randNum = Math.random();
-    if (randNum < 0.7) {
-      numCod++;
-      codSpanEl.innerHTML = numCod;
-      resultImgEl.src = "img/Raw-Cod.png";
-    } else if (randNum < 0.9) {
-      numSalmon++;
-      salmonSpanEl.innerHTML = numSalmon;
-      resultImgEl.src = "img/Raw-Salmon.png";
-    } else if (randNum < 0.95) {
-      numTropical++;
-      tropicalSpanEl.innerHTML = numTropical;
-      resultImgEl.src = "img/Tropical-Fish.png";
-    } else {
-      numPuffer++;
-      pufferSpanEl.innerHTML = numPuffer;
-      resultImgEl.src = "img/Pufferfish.png";
-    }
-
-    }
-    else if(a==10 && b==10 && c==30)
-    {
-        let randNum = Math.random();
     if (randNum < 0.1) {
-      numCod++;
+     // numCod++;
       codSpanEl.innerHTML = numCod;
-      resultImgEl.src = "img/Raw-Cod.png";
+      return "img/Raw-Cod.png";
     } else if (randNum < 0.2) {
-      numSalmon++;
+     // numSalmon++;
       salmonSpanEl.innerHTML = numSalmon;
-      resultImgEl.src = "img/Raw-Salmon.png";
+      return "img/Raw-Salmon.png";
     } else if (randNum < 0.5) {
-      numTropical++;
+     // numTropical++;
       tropicalSpanEl.innerHTML = numTropical;
-      resultImgEl.src = "img/Tropical-Fish.png";
+      return "img/Tropical-Fish.png";
     } else {
-      numPuffer++;
+     // numPuffer++;
       pufferSpanEl.innerHTML = numPuffer;
-      resultImgEl.src = "img/Pufferfish.png";
+      return "img/Pufferfish.png";
     }
-
-    }
-    else if(a==25 && b==25 && c==25)
-    {
+  } else if (character === "villager") {
+    // VILLAGER PROBABILITIES: cod (25%), salmon (25%), tropical (25%), puffer (25%)
     let randNum = Math.random();
     if (randNum < 0.25) {
-      numCod++;
+     // numCod++;
       codSpanEl.innerHTML = numCod;
-      resultImgEl.src = "img/Raw-Cod.png";
+      return "img/Raw-Cod.png";
     } else if (randNum < 0.5) {
-      numSalmon++;
+     // numSalmon++;
       salmonSpanEl.innerHTML = numSalmon;
-      resultImgEl.src = "img/Raw-Salmon.png";
+      return "img/Raw-Salmon.png";
     } else if (randNum < 0.75) {
-      numTropical++;
+     // numTropical++;
       tropicalSpanEl.innerHTML = numTropical;
-      resultImgEl.src = "img/Tropical-Fish.png";
+      return "img/Tropical-Fish.png";
     } else {
-      numPuffer++;
+    //  numPuffer++;
       pufferSpanEl.innerHTML = numPuffer;
-      resultImgEl.src = "img/Pufferfish.png";
+      return "img/Pufferfish.png";
     }
-
-    }
-
-
-
+  }
 }
+
 // Character Select
 steveImgEl.addEventListener("click", selectSteve);
 alexImgEl.addEventListener("click", selectAlex);
@@ -119,6 +99,7 @@ function selectSteve() {
   steveImgEl.classList.add("active");
   alexImgEl.classList.remove("active");
   villagerImgEl.classList.remove("active");
+  simulatecatch("steve")''
 }
 
 function selectAlex() {
@@ -126,6 +107,7 @@ function selectAlex() {
   steveImgEl.classList.remove("active");
   alexImgEl.classList.add("active");
   villagerImgEl.classList.remove("active");
+  simulatecatch("alex")''
 }
 
 function selectVillager() {
@@ -133,4 +115,5 @@ function selectVillager() {
   steveImgEl.classList.remove("active");
   alexImgEl.classList.remove("active");
   villagerImgEl.classList.add("active");
+  simulatecatch("villager");
 }
